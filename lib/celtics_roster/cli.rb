@@ -54,7 +54,9 @@ private
   end
 
   def goodbye
-    puts "Red Quote"
+    quote = Scraper.get_quotes
+    puts quote
+    puts "        -RED AUERBACH"
   end
 
 end
