@@ -13,26 +13,19 @@ class CelticsRoster::CLI
     CelticsRoster::Player.display_roster
   end
 
-  # def menu
-  #   puts "Select the player's 'list number' to see their more info., or enter 'exit'"
-  #   input = gets.chomp
-  #   until input == 'exit'
-  #     if valid_input?(input)
-  #       player = CelticsRoster::Player.select_player(input.to_i)
-  #       puts player.name
-  #       menu
-  #     else
-  #       puts "Invalid input. Please re-enter"
-  #       menu
-  #     end
-  #   end
-  # end
+  def display_stats(player)
+    puts "#{player.name}"
+    stats_hash = Scraper.get_stats(player)
+    stats_hash.each do |key, value|
+      puts "#{key}: #{value}"
+    end
+  end
 
   def menu
     input = get_user_input
     if valid_input?(input)
       player = CelticsRoster::Player.select_player(input.to_i)
-      puts player.name
+      display_stats(player)
       menu
     elsif input == 'exit'
       return
@@ -45,7 +38,8 @@ class CelticsRoster::CLI
 private
 
   def get_user_input
-    puts "Select the player's 'list number' to see their more info., or enter 'exit'"
+    puts " "
+    print "Select the player's 'list number' to see current season stats, or enter 'exit': "
     input = gets.chomp
   end
 
@@ -54,9 +48,10 @@ private
   end
 
   def goodbye
+    system "clear"
     quote = Scraper.get_quotes
     puts quote
-    puts "        -RED AUERBACH"
+    puts "-RED AUERBACH"
   end
 
 end
