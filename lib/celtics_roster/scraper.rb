@@ -44,5 +44,9 @@ class Scraper
       next if index.odd?
       num.text
     end.compact
+    i = 0
+    while i < sections.length
+      
+    end
   end
 end
