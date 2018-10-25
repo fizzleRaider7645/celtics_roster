@@ -6,6 +6,7 @@ class CelticsRoster::CLI
 
   def call
     welcome
+    sleep(2)
     display_roster
     menu
     goodbye
@@ -45,7 +46,6 @@ private
   end
 
   def get_user_input
-    puts " "
     print "Select the player's 'list number' to see current season stats, or enter 'exit': "
     input = gets.chomp
   end
@@ -58,7 +58,7 @@ private
     system "clear"
     quote = Scraper.get_quotes
     puts quote
-    puts "-RED AUERBACH"
+    puts Pastel.new.red.bold.italic("-RED AUERBACH").center(quote.length * 2)
   end
 
   def welcome
