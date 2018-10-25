@@ -1,24 +1,14 @@
 require 'pry'
+require 'tty-font'
+require 'pastel'
 
 class CelticsRoster::CLI
 
   def call
+    welcome
     display_roster
     menu
     goodbye
-  end
-
-  def display_roster
-    CelticsRoster::Player.generate_players
-    CelticsRoster::Player.display_roster
-  end
-
-  def display_stats(player)
-    puts "#{player.name}"
-    stats_hash = Scraper.get_stats(player)
-    stats_hash.each do |key, value|
-      puts "#{key}: #{value}"
-    end
   end
 
   def menu
@@ -37,6 +27,23 @@ class CelticsRoster::CLI
 
 private
 
+  def display_roster
+    puts""
+    CelticsRoster::Player.generate_players
+    CelticsRoster::Player.display_roster
+  end
+
+  def display_stats(player)
+    puts ""
+    puts "******************************"
+    puts "     ~##{player.number}-#{player.name}~"
+    puts "******************************"
+    stats_hash = Scraper.get_stats(player)
+    stats_hash.each do |key, value|
+      puts "#{key}: #{value}"
+    end
+  end
+
   def get_user_input
     puts " "
     print "Select the player's 'list number' to see current season stats, or enter 'exit': "
@@ -52,6 +59,12 @@ private
     quote = Scraper.get_quotes
     puts quote
     puts "-RED AUERBACH"
+  end
+
+  def welcome
+    font = TTY::Font.new(:doom)
+    color = Pastel.new
+    puts color.green.on_black.bold(font.write("The Boston Celtics"))
   end
 
 end
