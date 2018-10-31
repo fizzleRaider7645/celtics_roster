@@ -1,6 +1,6 @@
-require 'nokogiri'
-require 'open-uri'
-require 'pry'
+# require 'nokogiri'
+# require 'open-uri'
+
 class Scraper
 
   BASE_PATH = "https://www.basketball-reference.com"
@@ -33,9 +33,8 @@ class Scraper
     quotes = doc.css(".quotation").map { |quote| quote.text }.sample
   end
 
-  def self.get_stats(player = nil)
-    # url = player.url
-    url = "https://www.basketball-reference.com/players/i/irvinky01.html"
+  def self.get_stats(player)
+    url = player.url
     html = open(url)
     doc = Nokogiri::HTML(html)
     summary = doc.css(".stats_pullout").css(".p1").css("div")
@@ -44,9 +43,12 @@ class Scraper
       next if index.odd?
       num.text
     end.compact
+    stats = {}
     i = 0
     while i < sections.length
-      
+      stats[sections[i]] = nums[i]
+      i += 1
     end
+    stats
   end
 end

@@ -1,5 +1,5 @@
 class CelticsRoster::Player
-  attr_accessor :name, :number, :position
+  attr_reader :name, :number, :position, :url
 
   @@full_roster = []
 

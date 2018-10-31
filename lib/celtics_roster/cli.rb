@@ -1,16 +1,18 @@
-require 'pry'
-require 'tty-font'
-require 'pastel'
+# require 'tty-font'
+# require 'pastel'
 
 class CelticsRoster::CLI
 
   def call
+    system "clear"
     welcome
-    sleep(2)
+    sleep(1)
     display_roster
     menu
     goodbye
   end
+
+private
 
   def menu
     input = get_user_input
@@ -21,12 +23,10 @@ class CelticsRoster::CLI
     elsif input == 'exit'
       return
     else
-      puts "Invalid input. Please re-enter."
+      puts Pastel.new.red.bold("Invalid input. Please re-enter.")
       menu
     end
   end
-
-private
 
   def display_roster
     puts""
@@ -46,6 +46,7 @@ private
   end
 
   def get_user_input
+    puts ""
     print "Select the player's 'list number' to see current season stats, or enter 'exit': "
     input = gets.chomp
   end
@@ -57,8 +58,8 @@ private
   def goodbye
     system "clear"
     quote = Scraper.get_quotes
-    puts quote
-    puts Pastel.new.red.bold.italic("-RED AUERBACH").center(quote.length * 2)
+    puts Pastel.new.italic(quote)
+    puts Pastel.new.red.bold("-RED AUERBACH").center(quote.length * 2)
   end
 
   def welcome
