@@ -3,8 +3,6 @@
 This gem lists the roster of the current Boston Celtics, and allows the user
 to choose a player to see their stats from the previous game they played.
 
-TODO: Delete this and the text above, and describe your gem
-
 ## Installation
 
 Clone repo "https://github.com/fizzleRaider7645/celtics_roster"
