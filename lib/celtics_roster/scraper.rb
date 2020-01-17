@@ -4,9 +4,9 @@
 class Scraper
 
   BASE_PATH = "https://www.basketball-reference.com"
-
+  YEAR = Time.new.year
   def self.get_roster_page
-    html = open("https://www.basketball-reference.com/teams/BOS/2019.html")
+    html = open("https://www.basketball-reference.com/teams/BOS/#{YEAR}.html")
     doc = Nokogiri::HTML(html)
   end
 
