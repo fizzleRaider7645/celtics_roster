@@ -1,17 +1,18 @@
-# require 'nokogiri'
-# require 'open-uri'
+require 'nokogiri'
+require 'open-uri'
 
 class Scraper
 
   BASE_PATH = "https://www.basketball-reference.com"
   YEAR = Time.new.year
+  
   def self.get_roster_page
-    html = open("#{BASE_PATH}/teams/BOS/#{YEAR}.html")
+    html = URI.open("#{BASE_PATH}/teams/BOS/#{YEAR}.html")
     doc = Nokogiri::HTML(html)
   end
 
   def self.get_quotes_page
-    html = open("http://www.notable-quotes.com/a/auerbach_red.html")
+    html = URI.open("http://www.notable-quotes.com/a/auerbach_red.html")
     doc = Nokogiri::HTML(html)
   end
 
@@ -35,7 +36,7 @@ class Scraper
 
   def self.get_stats(player)
     url = player.url
-    html = open(url)
+    html = URI.open(url)
     doc = Nokogiri::HTML(html)
     summary = doc.css(".stats_pullout").css(".p1").css("div")
     sections = summary.css("h4").map { |sec| sec.text }
