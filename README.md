@@ -1,3 +1,4 @@
+```
  _______ _            ____            _
 |__   __| |          |  _ \          | |
    | |  | |__   ___  | |_) | ___  ___| |_ ___  _ __
@@ -11,9 +12,16 @@
 | |    / _ \ | __| |/ __/ __|
 | |___|  __/ | |_| | (__\__ \
  \_____\___|_|\__|_|\___|___/
+```
+
+![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
+![Ruby](https://img.shields.io/badge/Ruby-CC342D?logo=ruby&logoColor=white)
+![Built with love for the Celtics](https://img.shields.io/badge/Built%20for-The%20Boston%20Celtics-006532)
 
 > *"It's not about the X's and O's, it's about the Jimmies and the Joes."*
 > — Red Auerbach
+
+![Larry Bird](https://media.giphy.com/media/XmYoAVeEMMh9yZRL8i/giphy.gif)
 
 ---
 
@@ -51,17 +59,22 @@ bin/celtics_roster
 ## What You'll See
 
 ```
- _______ _            ____            _
-|__   __| |          |  _ \          | |
-   | |  | |__   ___  | |_) | ___  ___| |_ ___  _ __
-   ...
-
 1 - Jayson Tatum - SF
 2 - Jaylen Brown - SG
 3 - Kristaps Porzingis - C
 ...
 
 Select the player's 'list number' to see current season stats, or enter 'exit':
+
+******************************
+     ~#0-Jayson Tatum~
+******************************
+Games: 10
+Points: 19.8
+Total Rebounds: 9.5
+Assists: 3.8
+Field Goal Percentage: 38.3
+...
 ```
 
 ---

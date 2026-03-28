@@ -38,17 +38,13 @@ class Scraper
     url = player.url
     html = URI.open(url)
     doc = Nokogiri::HTML(html)
-    summary = doc.css(".stats_pullout").css(".p1").css("div")
-    sections = summary.css("h4").map { |sec| sec.text }
-    nums =  summary.css("p").children.map.with_index do |num, index|
-      next if index.odd?
-      num.text
-    end.compact
     stats = {}
-    i = 0
-    while i < sections.length
-      stats[sections[i]] = nums[i]
-      i += 1
+    doc.css(".stats_pullout div div").each do |div|
+      label_span = div.css("span.poptip").first
+      next unless label_span
+      label = label_span["data-tip"] || label_span.css("strong").text
+      value = div.css("p").first&.text
+      stats[label] = value if label && value
     end
     stats
   end
