@@ -10,6 +10,9 @@ class CelticsRoster::CLI
     display_roster
     menu
     goodbye
+  rescue Interrupt
+    puts ""
+    goodbye
   end
 
 private
@@ -48,7 +51,9 @@ private
   def get_user_input
     puts ""
     print "Select the player's 'list number' to see current season stats, or enter 'exit': "
-    input = gets.chomp
+    gets.chomp
+  rescue Interrupt
+    raise Interrupt
   end
 
   def valid_input?(input)

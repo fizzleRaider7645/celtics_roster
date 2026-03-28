@@ -42,7 +42,8 @@ class Scraper
     doc.css(".stats_pullout div div").each do |div|
       label_span = div.css("span.poptip").first
       next unless label_span
-      label = label_span["data-tip"] || label_span.css("strong").text
+      raw_label = label_span["data-tip"] || label_span.css("strong").text
+      label = Nokogiri::HTML.parse(raw_label).text.split(":").first.strip
       value = div.css("p").first&.text
       stats[label] = value if label && value
     end
