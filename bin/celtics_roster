@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 
-require './lib/enviroment'
+require_relative '../lib/enviroment'
 
 CelticsRoster::CLI.new.call
