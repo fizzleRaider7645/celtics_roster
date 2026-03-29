@@ -16,6 +16,25 @@ class Scraper
     doc = Nokogiri::HTML(html)
   end
 
+  def self.get_team_leaders
+    doc = self.get_roster_page
+    players = doc.css("#per_game_stats tbody tr").reject { |r| r["class"]&.include?("thead") }.map do |row|
+      name = row.css("[data-stat='name_display']").text.strip
+      next if name.empty?
+      {
+        name: name,
+        pts:  row.css("[data-stat='pts_per_g']").text.strip.to_f,
+        trb:  row.css("[data-stat='trb_per_g']").text.strip.to_f,
+        ast:  row.css("[data-stat='ast_per_g']").text.strip.to_f
+      }
+    end.compact
+    {
+      pts: players.max_by { |p| p[:pts] },
+      trb: players.max_by { |p| p[:trb] },
+      ast: players.max_by { |p| p[:ast] }
+    }
+  end
+
   def self.get_players
     doc = self.get_roster_page
     rows = doc.css("#roster").css("tr")

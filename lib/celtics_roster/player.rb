@@ -30,4 +30,13 @@ class CelticsRoster::Player
   def self.select_player(input)
     self.all[input - 1]
   end
+
+  def self.find_by_name(query)
+    query = query.downcase
+    self.all.select { |p| p.name.downcase.include?(query) }
+  end
+
+  def self.random_player
+    self.all.sample
+  end
 end
