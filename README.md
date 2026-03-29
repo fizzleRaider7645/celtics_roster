@@ -18,11 +18,6 @@
 ![Ruby](https://img.shields.io/badge/Ruby-CC342D?logo=ruby&logoColor=white)
 ![Built with love for the Celtics](https://img.shields.io/badge/Built%20for-The%20Boston%20Celtics-006532)
 
-> *"It's not about the X's and O's, it's about the Jimmies and the Joes."*
-> — Red Auerbach
-
-![Larry Bird](https://media.giphy.com/media/XmYoAVeEMMh9yZRL8i/giphy.gif)
-
 ---
 
 ## What Is This?
